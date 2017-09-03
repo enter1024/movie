@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>movie</title>
+</head>
+<body ng-app="app">
+<!--顶部导航条-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#top-right-nav-bar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">豆瓣电影</a>
+        </div>
+        <div class="form-or-link-box navbar-right navbar-collapse collapse" id="top-right-nav-bar">
+            <form class="navbar-form navbar-left" ng-controller="SearchController" ng-submit="submitSearch()">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="片名..." ng-model="input">
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#/in_theaters/1" item-collapse>正在上映</a></li>
+                <li><a href="#/coming_soon/1" item-collapse>即将上映</a></li>
+                <li><a href="#/top250/1" item-collapse>TOP250</a></li>
+                <li><a href="#/top251" item-collapse>重定向</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--电影内容列表-->
+<div class="main-content row">
+    <!--左边控制器导航-->
+    <div class="control-left col-md-2 col-sm-3" ng-controller="ActiveController">
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-class="{active: item == 'in_theaters'}"><a href="#/in_theaters/1">正在热播</a></li>
+            <li ng-class="{active: item == 'coming_soon'}"><a href="#/coming_soon/1">即将上映</a></li>
+            <li ng-class="{active: item == 'top250'}"><a href="#/top250/1" id="top250">TOP250</a></li>
+            <li ng-class="{active: item == 'top251'}"><a href="#/top251">找不到路由(重定向)</a></li>
+        </ul>
+    </div>
+    <!--右边动态生成的电影列表-->
+    <div class="view-right col-md-10 col-md-offset-2 col-sm-9 col-sm-offset-3" ng-view></div>
+</div>
+
+<!-- 框架的js依赖 -->
+<script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/bootstrap/js/bootstrap.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<!--本地js-->
+<script src="js/app.js"></script>
+<script src="components/httpservice.js"></script>
+<script src="movie_list/controller.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<h3 class="page-header"> {{datas.title}}</h3>
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="item in datas.subjects">
+        <span class="badge">{{item.rating.average}}</span>
+        <a href="{{item.alt}}" target="_blank" style="text-decoration: none">
+            <div class="media">
+                <div class="media-left media-middle">
+                    <img class="media-object" ng-src="{{item.images.medium}}" alt="{{item.title}}">
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading">{{item.title}}</h3>
+                    <p>类型：<span ng-repeat="type in item.genres">{{type + ($last?'':'、')}}</span></p>
+                    <p>年份：{{item.year}}</p>
+                    <p>演员：<span ng-repeat="y in item.casts">{{y.name + ($last?'':'、')}}</span></p>
+                    <p>导演：<span ng-repeat="d in item.directors">{{d.name + ($last?'':'、')}}</span></p>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<div class="page-footer" ng-show="!loading">
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous" ng-class="{disabled: currentPage <= 1}"><a href="" ng-click="toPage(currentPage - 1)"><span aria-hidden="true"><< </span>上一页</a></li>
+            <li class="next" ng-class="{disabled: currentPage >= totalPages}"><a href="" ng-click="toPage(currentPage + 1)">下一页<span aria-hidden="true"> >></span></a></li>
+        </ul>
+    </nav>
+    <p>总<strong>{{totalCount}}</strong>条数据，第<strong>{{currentPage}}</strong>页，共<strong>{{totalPages}}</strong>页</p>
+</div>
+
+<div class="sk-circle-box" ng-show="loading">
+    <div class="sk-circle">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+    </div>
+</div>
