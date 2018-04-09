@@ -20,7 +20,7 @@
         '$routeParams',
         'HttpService',
         function ($scope, $route, $routeParams, HttpService) {
-            var requestCount = 3;                                   //每页显示的条数
+            var requestCount = 10;                                   //每页显示的条数
             $scope.currentPage = parseInt($routeParams.page);          //从控制器参数中获取当前页的数值
             var startCount = ($scope.currentPage - 1) * requestCount;      //开始的条数
             //  初始化数据
